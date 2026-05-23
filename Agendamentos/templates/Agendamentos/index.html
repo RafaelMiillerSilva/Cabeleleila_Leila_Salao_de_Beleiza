@@ -1,0 +1,64 @@
+﻿{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cabeleleila Leila - Salão de Beleza</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="min-h-screen flex flex-col justify-between font-sans relative bg-no-repeat bg-cover bg-center bg-fixed"
+      style="background-image: url('{% static 'Agendamentos/img/landpagebackground.png' %}');">
+
+    <div class="absolute inset-0 bg-pink-950/20 backdrop-blur-[2px] pointer-events-none z-0"></div>
+
+    <header class="bg-white/90 backdrop-blur-md shadow-md py-3 px-6 flex justify-between items-center max-w-6xl mx-auto w-full mt-4 rounded-2xl z-10 relative border border-white/20">
+
+        <a href="/" class="flex items-center gap-3.5 group">
+            <img src="{% static 'Agendamentos/img/logoLeila.png' %}"
+                 alt="Logo Cabeleleila Leila"
+                 class="h-14 w-auto group-hover:scale-105 transition-transform duration-300">
+            <span class="text-gray-900 text-4xl select-none" style="font-family: 'Great Vibes', cursive;">
+                Cabeleleila Leila
+            </span>
+        </a>
+
+        <div class="space-x-4">
+            <a href="/login/" class="text-gray-700 hover:text-pink-600 font-semibold transition">Entrar</a>
+            <a href="/cadastro/" class="bg-pink-600 hover:bg-pink-700 text-white px-5 py-2.5 rounded-xl font-medium shadow-sm transition">Criar Conta</a>
+        </div>
+    </header>
+
+    <main class="max-w-3xl mx-auto text-center px-8 py-10 my-auto flex flex-col items-center bg-white/80 backdrop-blur-lg rounded-3xl shadow-xl border border-white/40 z-10 relative">
+
+        <img src="{% static 'Agendamentos/img/logoLeila.png' %}"
+             alt="Logo Central Cabeleleila Leila"
+             class="h-44 w-auto mb-6 drop-shadow-md hover:scale-105 transition-transform duration-300">
+
+        <h2 class="text-5xl font-extrabold text-gray-900 mb-6 leading-tight tracking-tight">
+            Seu cabelo, sua unha, <br>
+            <span class="text-pink-600 drop-shadow-xs">tudo alinhado com você.</span>
+        </h2>
+
+        <p class="text-lg text-gray-700 mb-8 max-w-xl mx-auto font-medium leading-relaxed">
+            Faça seu agendamento online de forma personalizada, acompanhe seu histórico e garanta o melhor horário no salão mais famoso do Brasil.
+        </p>
+
+        <div>
+            <a href="/agendar/" class="bg-pink-600 hover:bg-pink-700 text-white text-lg px-10 py-4 rounded-xl font-bold shadow-md hover:shadow-xl hover:scale-[1.02] transition-all duration-300 block sm:inline-block">
+                Agendar um Serviço Online
+            </a>
+        </div>
+    </main>
+
+    <footer class="text-center text-white font-medium text-sm pb-6 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] z-10 relative tracking-wide">
+        © 2026 Cabeleleila Leila Salão de Beleza - CONTATO: +55 18 996774488
+    </footer>
+
+</body>
+</html>

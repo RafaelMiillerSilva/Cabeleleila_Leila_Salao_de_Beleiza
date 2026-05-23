@@ -1,0 +1,66 @@
+﻿{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cabeleleila Leila - Salão de Beleza</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-pink-50 min-h-screen font-sans flex flex-col justify-between">
+
+    <nav class="bg-white shadow-sm p-4 max-w-6xl mx-auto w-full mt-4 rounded-2xl flex justify-between items-center px-6">
+        <div class="flex items-center space-x-2">
+            <a href="{% url 'index' %}" class="flex items-center gap-3.5 group">
+                <img src="{% static 'Agendamentos/img/logoLeila.png' %}"
+                     alt="Logo Cabeleleila Leila"
+                     class="h-14 w-auto group-hover:scale-105 transition-transform duration-300">
+
+                <span class="text-gray-900 text-4xl" style="font-family: 'Great Vibes', cursive;">
+                    Cabeleleila Leila
+                </span>
+            </a>
+        </div>
+
+        <div class="flex items-center space-x-6 text-sm">
+            {% if request.user.is_authenticated %}
+            <span class="text-gray-600 hidden sm:inline">Olá, <strong class="text-gray-900">{{ request.user.perfil.nome|default:request.user.username }}</strong></span>
+
+            {% if request.user.is_staff %}
+            <a href="/admin/" class="text-gray-900 hover:text-pink-600 transition font-bold flex items-center gap-1">
+                 Painel Gerencial
+            </a>
+            {% endif %}
+
+            <a href="/agendar/" class="text-gray-600 hover:text-pink-600 transition font-medium">Novo Agendamento</a>
+            <a href="/historico/" class="text-gray-600 hover:text-pink-600 transition font-medium">Meu Histórico</a>
+
+            <form method="POST" action="{% url 'logout' %}" class="inline">
+                {% csrf_token %}
+                <button type="submit" class="text-red-500 hover:text-red-700 transition font-medium cursor-pointer bg-transparent border-0 p-0 m-0 align-baseline">
+                    Sair
+                </button>
+            </form>
+            {% else %}
+            <a href="/login/" class="text-pink-600 hover:underline font-medium">Entrar</a>
+            <a href="/cadastro/" class="bg-pink-600 hover:bg-pink-700 text-white px-4 py-2 rounded-xl font-medium shadow-sm transition">Criar Conta</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <main class="flex-grow">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="text-center text-gray-400 text-xs pb-6 mt-8">
+        © 2026 Cabeleleila Leila Salão de Beleiza - CONTATO: +55 18 996774488
+    </footer>
+
+</body>
+</html>
