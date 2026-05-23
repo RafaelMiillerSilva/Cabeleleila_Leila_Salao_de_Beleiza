@@ -163,7 +163,7 @@ python manage.py runserver
 
 | Tecnologia | Descrição |
 |---|---|
-| Django 2.1.2 | Framework web principal |
+| Django 5.x | Framework web principal |
 | PostgreSQL 15 | Banco de dados relacional |
 | Docker | Containerização da aplicação |
 | Docker Compose | Orquestração dos containers |
@@ -174,7 +174,7 @@ python manage.py runserver
 
 ## Informacoes do Projeto
 
-- **Framework:** Django 2.1.2
+- **Framework:** Django >=3.2.14 
 - **Banco de Dados:** PostgreSQL 15
 - **Servidor de Produção:** Gunicorn
 - **Deploy:** Preparado para Railway com estrutura Dockerizada
