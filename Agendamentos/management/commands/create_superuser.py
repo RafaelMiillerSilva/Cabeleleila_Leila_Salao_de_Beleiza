@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from django.core.management.base import BaseCommand
 
 class Command(BaseCommand):
-    help = 'Cria superusuário a partir de variáveis de ambiente, se não existir'
+    help = 'Cria ou corrige superusuário a partir de variáveis de ambiente'
 
     def handle(self, *args, **options):
         User = get_user_model()
@@ -12,12 +12,19 @@ class Command(BaseCommand):
         password = os.environ.get('DJANGO_SUPERUSER_PASSWORD')
 
         if not all([username, email, password]):
-            self.stdout.write(self.style.WARNING('Variáveis de superusuário não definidas. Pulando.'))
+            self.stdout.write(self.style.WARNING('Variáveis não definidas. Pulando.'))
             return
 
-        if User.objects.filter(username=username).exists():
-            self.stdout.write(self.style.WARNING(f'Superusuário "{username}" já existe. Pulando.'))
-            return
+        user, created = User.objects.get_or_create(username=username)
+        
+        user.email = email
+        user.set_password(password)
+        user.is_staff = True
+        user.is_superuser = True
+        user.is_active = True
+        user.save()
 
-        User.objects.create_superuser(username=username, email=email, password=password)
-        self.stdout.write(self.style.SUCCESS(f'Superusuário "{username}" criado com sucesso!'))
+        if created:
+            self.stdout.write(self.style.SUCCESS(f'Superusuário "{username}" criado!'))
+        else:
+            self.stdout.write(self.style.SUCCESS(f'Superusuário "{username}" corrigido!'))
