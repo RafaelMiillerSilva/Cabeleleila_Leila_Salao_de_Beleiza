@@ -1,1 +1,1 @@
-﻿web: python manage.py createsuperuser --noinput || true && gunicorn CabeleleilaLeila.wsgi:application --bind 0.0.0.0:$PORT
+﻿web: sh -c "python manage.py createsuperuser --noinput || true && gunicorn CabeleleilaLeila.wsgi:application --bind 0.0.0.0:$PORT"
