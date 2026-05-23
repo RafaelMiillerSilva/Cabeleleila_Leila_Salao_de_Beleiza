@@ -7,7 +7,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Configurações de Segurança e Ambiente
 SECRET_KEY = '55ca9541-979b-4133-a396-45eed3954f2c'
 DEBUG = True
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', 'web']
+ALLOWED_HOSTS = ['*']
 
 # Fluxo de Autenticação e Redirecionamento
 LOGIN_URL = 'login'
