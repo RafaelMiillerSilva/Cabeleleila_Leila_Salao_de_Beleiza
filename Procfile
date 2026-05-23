@@ -1,1 +1,1 @@
-﻿web: gunicorn CabeleleilaLeila.wsgi:application
+﻿web: python manage.py migrate && gunicorn CabeleleilaLeila.wsgi:application
