@@ -3,6 +3,10 @@
 Sistema de agendamento online desenvolvido com o framework **Django** para o salão Cabeleleila Leila.
 
 O sistema esta disponivel em producao no Railway: https://cabeleleilaleilasalaodebeleiza-production.up.railway.app/
+CONTA ADMIN PARA TESTE:
+- Usuário: admin
+- Email: admin@email.com
+- Senha: admin123
 
 ---
 
